@@ -6,6 +6,7 @@ import TextArea from './TextArea'
 import Button from './Button'
 import Legend from './Legend'
 import Info from './Info'
+import Reply from './Reply'
 
 function Comment({
     name,
@@ -14,6 +15,7 @@ function Comment({
     date,
     replies,
     handleAddReply,
+    handleEditReply,
     handleDeleteReply,
     handleDeleteComment,
 }) {
@@ -59,15 +61,19 @@ function Comment({
 
     return (
         <li>
-            <Info
-                name={name}
-                text={text}
-                commentId={id}
-                date={date}
-                showReplyButton={true}
-                toggleReply={toggleReply}
-                handleDelete={handleDeleteComment}
-            />
+            {showEditForm ? (
+                <p>What the hell</p>
+            ) : (
+                <Info
+                    name={name}
+                    text={text}
+                    commentId={id}
+                    date={date}
+                    showReplyButton={true}
+                    toggleReply={toggleReply}
+                    handleDelete={handleDeleteComment}
+                />
+            )}
 
             {showReplyForm && (
                 <StyledForm onSubmit={handleSubmit}>
@@ -94,12 +100,13 @@ function Comment({
                 <ul>
                     {replies.map(function mapReply(reply) {
                         return (
-                            <Info
+                            <Reply
                                 key={reply.id}
                                 commentId={id}
                                 replyId={reply.id}
                                 {...reply}
-                                handleDelete={handleDeleteReply}
+                                handleDeleteReply={handleDeleteReply}
+                                handleEditReply={handleEditReply}
                             />
                         )
                     })}
@@ -116,8 +123,9 @@ Comment.propTypes = {
     date: PropTypes.number.isRequired,
     replies: PropTypes.array.isRequired,
     handleAddReply: PropTypes.func.isRequired,
-    handleDeleteComment: PropTypes.func.isRequired,
+    handleEditReply: PropTypes.func.isRequired,
     handleDeleteReply: PropTypes.func.isRequired,
+    handleDeleteComment: PropTypes.func.isRequired,
 }
 
 export default Comment

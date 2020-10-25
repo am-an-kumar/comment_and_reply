@@ -7,6 +7,7 @@ function Info({
     showReplyButton,
     toggleReply,
     handleDelete,
+    handleEdit,
     name,
     text,
     date,
@@ -28,7 +29,11 @@ function Info({
                         Reply
                     </Button>
                 )}
-                <Button data-commentid={commentId} data-replyid={replyId}>
+                <Button
+                    data-commentid={commentId}
+                    data-replyid={replyId}
+                    onClick={handleEdit}
+                >
                     Edit
                 </Button>
                 <Button
@@ -57,6 +62,7 @@ Info.propTypes = {
     showReplyButton: PropTypes.bool,
     toggleReply: PropTypes.func,
     handleDelete: PropTypes.func.isRequired,
+    handleEdit: PropTypes.func.isRequired,
 }
 
 export default Info

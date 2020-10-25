@@ -5,8 +5,9 @@ import Comment from './Comment'
 function CommentList({
     comments,
     handleAddReply,
-    handleDeleteComment,
+    handleEditReply,
     handleDeleteReply,
+    handleDeleteComment,
 }) {
     return (
         comments.length !== 0 && (
@@ -16,9 +17,10 @@ function CommentList({
                         <Comment
                             key={comment.id}
                             {...comment}
-                            handleDeleteComment={handleDeleteComment}
                             handleAddReply={handleAddReply}
+                            handleEditReply={handleEditReply}
                             handleDeleteReply={handleDeleteReply}
+                            handleDeleteComment={handleDeleteComment}
                         />
                     )
                 })}
@@ -30,6 +32,7 @@ function CommentList({
 CommentList.propTypes = {
     comments: PropTypes.array.isRequired,
     handleAddReply: PropTypes.func.isRequired,
+    handleEditReply: PropTypes.func.isRequired,
     handleDeleteComment: PropTypes.func.isRequired,
     handleDeleteReply: PropTypes.func.isRequired,
 }

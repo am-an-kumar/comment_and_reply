@@ -95,7 +95,24 @@ function App() {
         )
     }
 
-    function handleEditReply(commentId, replyId, replyText) {}
+    function handleEditReply(commentId, replyId, newReply) {
+        setComments(
+            comments.map(function mapComment(comment) {
+                return comment.id === commentId
+                    ? {
+                          ...comment,
+                          replies: comment.replies.map(function mapReply(
+                              reply,
+                          ) {
+                              return reply.id === replyId
+                                  ? { ...reply, text: newReply }
+                                  : reply
+                          }),
+                      }
+                    : comment
+            }),
+        )
+    }
 
     function handleDeleteReply(event) {
         const dataset = event.target.dataset
@@ -144,8 +161,9 @@ function App() {
             <CommentList
                 comments={comments}
                 handleAddReply={handleAddReply}
-                handleDeleteComment={handleDeleteComment}
+                handleEditReply={handleEditReply}
                 handleDeleteReply={handleDeleteReply}
+                handleDeleteComment={handleDeleteComment}
             />
         </>
     )

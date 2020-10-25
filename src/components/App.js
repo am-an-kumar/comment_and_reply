@@ -55,10 +55,16 @@ function App() {
         })
     }
 
-    // add/edit/delete comments
-    function handleAddComment(commenterName, commentText) {}
-
-    function handleEditComment(commentId, commentText) {}
+    // edit/delete comments handlers
+    function handleEditComment(commentId, newComment) {
+        setComments(
+            comments.map(function mapComment(comment) {
+                return comment.id === commentId
+                    ? { ...comment, text: newComment }
+                    : comment
+            }),
+        )
+    }
 
     function handleDeleteComment(event) {
         // DOM attributes are strings
@@ -71,7 +77,7 @@ function App() {
         )
     }
 
-    // add/edit/delete replies
+    // add/edit/delete replies handlers
     function handleAddReply(commentId, replierName, replyText) {
         const currentTimestamp = Date.now()
 
@@ -163,6 +169,7 @@ function App() {
                 handleAddReply={handleAddReply}
                 handleEditReply={handleEditReply}
                 handleDeleteReply={handleDeleteReply}
+                handleEditComment={handleEditComment}
                 handleDeleteComment={handleDeleteComment}
             />
         </>

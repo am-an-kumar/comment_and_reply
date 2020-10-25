@@ -7,6 +7,7 @@ function CommentList({
     handleAddReply,
     handleEditReply,
     handleDeleteReply,
+    handleEditComment,
     handleDeleteComment,
 }) {
     return (
@@ -20,6 +21,7 @@ function CommentList({
                             handleAddReply={handleAddReply}
                             handleEditReply={handleEditReply}
                             handleDeleteReply={handleDeleteReply}
+                            handleEditComment={handleEditComment}
                             handleDeleteComment={handleDeleteComment}
                         />
                     )
@@ -33,8 +35,9 @@ CommentList.propTypes = {
     comments: PropTypes.array.isRequired,
     handleAddReply: PropTypes.func.isRequired,
     handleEditReply: PropTypes.func.isRequired,
-    handleDeleteComment: PropTypes.func.isRequired,
     handleDeleteReply: PropTypes.func.isRequired,
+    handleEditComment: PropTypes.func.isRequired,
+    handleDeleteComment: PropTypes.func.isRequired,
 }
 
 export default CommentList

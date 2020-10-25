@@ -19,10 +19,6 @@ function Reply({
     const [newReply, setNewReply] = useState(text)
     const [showEditForm, setShowEditForm] = useState(false)
 
-    function handleReplyChange(event) {
-        setNewReply(event.target.value)
-    }
-
     function handleSubmit(event) {
         event.preventDefault()
         handleEditReply(commentId, replyId, newReply)
@@ -42,7 +38,7 @@ function Reply({
                 name="reply"
                 placeholder="Reply"
                 value={newReply}
-                onChange={handleReplyChange}
+                onChange={(event) => setNewReply(event.target.value)}
             />
             <Button type="submit">Post</Button>
         </StyledForm>

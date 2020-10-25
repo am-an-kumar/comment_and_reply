@@ -17,10 +17,12 @@ function Comment({
     handleAddReply,
     handleEditReply,
     handleDeleteReply,
+    handleEditComment,
     handleDeleteComment,
 }) {
     const [showReplyForm, setShowReplyForm] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
+    const [newComment, setNewComment] = useState(text)
 
     const [formData, setFormData] = useState({
         name: '',
@@ -28,7 +30,7 @@ function Comment({
         disabled: true,
     })
 
-    function handleSubmit(event) {
+    function handleAddReplySubmit(event) {
         event.preventDefault()
         const { name, reply } = formData
 
@@ -38,6 +40,12 @@ function Comment({
             reply: '',
             disabled: true,
         })
+    }
+
+    function handleEditFormSubmit(event) {
+        event.preventDefault()
+        handleEditComment(id, newComment)
+        setShowEditForm(false)
     }
 
     function handleChange(event) {
@@ -62,7 +70,22 @@ function Comment({
     return (
         <li>
             {showEditForm ? (
-                <p>What the hell</p>
+                <StyledForm onSubmit={handleEditFormSubmit}>
+                    <Legend>Comment</Legend>
+                    <Input
+                        name="name"
+                        placeholder="Name"
+                        value={name}
+                        readOnly={true}
+                    />
+                    <TextArea
+                        name="comment"
+                        placeholder="Comment"
+                        value={newComment}
+                        onChange={(event) => setNewComment(event.target.value)}
+                    />
+                    <Button type="submit">Post</Button>
+                </StyledForm>
             ) : (
                 <Info
                     name={name}
@@ -71,12 +94,13 @@ function Comment({
                     date={date}
                     showReplyButton={true}
                     toggleReply={toggleReply}
+                    handleEdit={() => setShowEditForm(true)}
                     handleDelete={handleDeleteComment}
                 />
             )}
 
             {showReplyForm && (
-                <StyledForm onSubmit={handleSubmit}>
+                <StyledForm onSubmit={handleAddReplySubmit}>
                     <Legend>Reply</Legend>
                     <Input
                         name="name"
@@ -125,6 +149,7 @@ Comment.propTypes = {
     handleAddReply: PropTypes.func.isRequired,
     handleEditReply: PropTypes.func.isRequired,
     handleDeleteReply: PropTypes.func.isRequired,
+    handleEditComment: PropTypes.func.isRequired,
     handleDeleteComment: PropTypes.func.isRequired,
 }
 

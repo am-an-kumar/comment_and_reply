@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Comment from './Comment'
+import List from './List'
 
 function CommentList({
     comments,
@@ -13,7 +14,7 @@ function CommentList({
 }) {
     return (
         comments.length !== 0 && (
-            <ul>
+            <List>
                 {comments.map(function mapComments(comment) {
                     return (
                         <Comment
@@ -28,7 +29,7 @@ function CommentList({
                         />
                     )
                 })}
-            </ul>
+            </List>
         )
     )
 }

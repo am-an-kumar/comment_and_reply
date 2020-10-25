@@ -6,6 +6,7 @@ import TextArea from './TextArea'
 import Button from './Button'
 import Legend from './Legend'
 import Info from './Info'
+import List from './List'
 import Reply from './Reply'
 
 function Comment({
@@ -41,6 +42,7 @@ function Comment({
             reply: '',
             disabled: true,
         })
+        setShowReplyForm(false)
     }
 
     function handleEditFormSubmit(event) {
@@ -126,7 +128,7 @@ function Comment({
             )}
 
             {replies.length !== 0 && (
-                <ul>
+                <List indented={true}>
                     {repliesToShow.map(function mapReply(reply) {
                         return (
                             <Reply
@@ -139,7 +141,7 @@ function Comment({
                             />
                         )
                     })}
-                </ul>
+                </List>
             )}
         </li>
     )

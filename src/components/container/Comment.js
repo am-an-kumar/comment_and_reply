@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import StyledForm from './StyledForm'
-import Input from './Input'
-import TextArea from './TextArea'
-import Button from './Button'
-import Legend from './Legend'
-import Info from './Info'
-import List from './List'
-import Reply from './Reply'
+import {
+    StyledForm,
+    Input,
+    TextArea,
+    Button,
+    Legend,
+    List,
+    Info,
+    Reply,
+} from 'components'
 
 function Comment({
     name,
@@ -160,4 +162,4 @@ Comment.propTypes = {
     handleDeleteComment: PropTypes.func.isRequired,
 }
 
-export default Comment
+export { Comment }

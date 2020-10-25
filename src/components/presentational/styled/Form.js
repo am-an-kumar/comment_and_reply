@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import Form from './Form'
 
-const StyledForm = styled(Form)`
+const StyledForm = styled.form`
     display: flex;
     flex-flow: column nowrap;
     background-color: #dedede;
@@ -24,4 +23,4 @@ const StyledForm = styled(Form)`
     }
 `
 
-export default StyledForm
+export { StyledForm }

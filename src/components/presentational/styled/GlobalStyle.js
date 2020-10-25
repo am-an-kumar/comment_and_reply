@@ -22,8 +22,14 @@ const GlobalStyle = createGlobalStyle`
 
     #root {
         padding: 1rem;
+        display: flex;
+        flex-flow: column nowrap;
+
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
     }
 
 `
 
-export default GlobalStyle
+export { GlobalStyle }

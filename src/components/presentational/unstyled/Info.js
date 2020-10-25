@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from './Button'
+import { Button } from 'components/presentational/styled'
 
 // comments will just have the commentId while replies will have both commentId and replyId
 function Info({
@@ -65,4 +65,4 @@ Info.propTypes = {
     handleEdit: PropTypes.func.isRequired,
 }
 
-export default Info
+export { Info }

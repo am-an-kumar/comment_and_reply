@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import StyledForm from './StyledForm'
-import Legend from './Legend'
-import Input from './Input'
-import TextArea from './TextArea'
-import Button from './Button'
-import Info from './Info'
+import { StyledForm, Legend, Input, TextArea, Button, Info } from 'components'
 
 function Reply({
     commentId,
@@ -64,4 +59,4 @@ Reply.proTypes = {
     handleDeleteReply: PropTypes.func.isRequired,
 }
 
-export default Reply
+export { Reply }

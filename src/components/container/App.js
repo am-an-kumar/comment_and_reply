@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import GlobalStyle from './GlobalStyle'
-import StyledForm from './StyledForm'
-import CommentList from './CommentList'
-import Input from './Input'
-import TextArea from './TextArea'
-import Button from './Button'
-import Legend from './Legend'
+import {
+    GlobalStyle,
+    StyledForm,
+    Input,
+    TextArea,
+    Button,
+    Legend,
+    CommentList,
+} from 'components'
 import useComponentDidUpdate from 'hooks/useComponentUpdate'
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import {
@@ -206,4 +208,4 @@ function App() {
     )
 }
 
-export default App
+export { App }

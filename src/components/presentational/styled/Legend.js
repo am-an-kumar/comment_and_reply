@@ -5,4 +5,4 @@ const Legend = styled.legend`
     font-family: Rubik, sans-serif;
 `
 
-export default Legend
+export { Legend }

@@ -7,4 +7,4 @@ const TextArea = styled.textarea`
     outline: none;
 `
 
-export default TextArea
+export { TextArea }

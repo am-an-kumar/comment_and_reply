@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Comment from './Comment'
-import List from './List'
+import { Comment, List } from 'components'
 
 function CommentList({
     comments,
@@ -44,4 +43,4 @@ CommentList.propTypes = {
     isAscendingSorted: PropTypes.bool.isRequired,
 }
 
-export default CommentList
+export { CommentList }

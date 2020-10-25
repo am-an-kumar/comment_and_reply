@@ -5,4 +5,4 @@ const List = styled.ul`
     padding-left: ${({ indented }) => (indented ? '3rem' : '0')};
 `
 
-export default List
+export { List }

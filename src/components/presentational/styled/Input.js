@@ -7,4 +7,4 @@ const Input = styled.input`
     outline: none;
 `
 
-export default Input
+export { Input }

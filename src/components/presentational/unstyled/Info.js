@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'components/presentational/styled'
+import { getFormattedDate } from 'utils/lib'
 
 // comments will just have the commentId while replies will have both commentId and replyId
 function Info({
@@ -13,13 +14,17 @@ function Info({
     date,
     commentId,
     replyId,
+    className,
 }) {
     return (
-        <div>
-            <p>{name}</p>
-            <p>{text}</p>
-            <p>{date}</p>
-            <div>
+        <div className={className}>
+            <div className="meta">
+                <span className="name">{name}</span>
+                <span className="date">{getFormattedDate(date)}</span>
+                {}
+            </div>
+            <p className="text">{text}</p>
+            <div className="buttons">
                 {showReplyButton && (
                     <Button
                         data-commentid={commentId}
@@ -63,6 +68,7 @@ Info.propTypes = {
     toggleReply: PropTypes.func,
     handleDelete: PropTypes.func.isRequired,
     handleEdit: PropTypes.func.isRequired,
+    className: PropTypes.string,
 }
 
 export { Info }

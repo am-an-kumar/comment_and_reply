@@ -7,7 +7,7 @@ import {
     Button,
     Legend,
     List,
-    Info,
+    StyledInfo,
     Reply,
 } from 'components'
 
@@ -96,7 +96,7 @@ function Comment({
                     <Button type="submit">Post</Button>
                 </StyledForm>
             ) : (
-                <Info
+                <StyledInfo
                     name={name}
                     text={text}
                     commentId={id}

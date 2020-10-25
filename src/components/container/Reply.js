@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { StyledForm, Legend, Input, TextArea, Button, Info } from 'components'
+import {
+    StyledForm,
+    Legend,
+    Input,
+    TextArea,
+    Button,
+    StyledInfo,
+} from 'components'
 
 function Reply({
     commentId,
@@ -38,7 +45,7 @@ function Reply({
             <Button type="submit">Post</Button>
         </StyledForm>
     ) : (
-        <Info
+        <StyledInfo
             commentId={commentId}
             replyId={replyId}
             name={name}

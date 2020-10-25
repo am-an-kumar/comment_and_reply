@@ -16,4 +16,10 @@ function saveCommentsToLocalStorage(comments) {
     localStorage.setItem(localStorageKey, commentsJSON)
 }
 
-export { getCommentsFromLocalStorage, saveCommentsToLocalStorage }
+function getFormattedDate(dateMs) {}
+
+export {
+    getCommentsFromLocalStorage,
+    saveCommentsToLocalStorage,
+    getFormattedDate,
+}

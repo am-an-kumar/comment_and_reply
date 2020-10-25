@@ -51,7 +51,7 @@ function Comment({
 
     function handleChange(event) {
         let { name, value } = event.target
-        value = value.trim()
+        value = value.trimStart()
 
         // this is a deep copy as formData has primitive properties only
         const formDataCopy = { ...formData }

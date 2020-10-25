@@ -6,6 +6,11 @@ import Input from './Input'
 import TextArea from './TextArea'
 import Button from './Button'
 import Legend from './Legend'
+import useComponentDidUpdate from 'hooks/useComponentUpdate'
+import {
+    getCommentsFromLocalStorage,
+    saveCommentsToLocalStorage,
+} from 'utils/lib'
 
 function App() {
     const [formData, setFormData] = useState({
@@ -14,7 +19,12 @@ function App() {
         disabled: true,
     })
 
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState(getCommentsFromLocalStorage())
+
+    useComponentDidUpdate(() => {
+        saveCommentsToLocalStorage(comments)
+        console.log('Effect ran!!!')
+    }, [comments])
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -163,6 +173,8 @@ function App() {
                     Post
                 </Button>
             </StyledForm>
+
+            <p>Sort By: Date and Time</p>
 
             <CommentList
                 comments={comments}

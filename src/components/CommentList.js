@@ -9,6 +9,7 @@ function CommentList({
     handleDeleteReply,
     handleEditComment,
     handleDeleteComment,
+    isAscendingSorted,
 }) {
     return (
         comments.length !== 0 && (
@@ -23,6 +24,7 @@ function CommentList({
                             handleDeleteReply={handleDeleteReply}
                             handleEditComment={handleEditComment}
                             handleDeleteComment={handleDeleteComment}
+                            isAscendingSorted={isAscendingSorted}
                         />
                     )
                 })}
@@ -38,6 +40,7 @@ CommentList.propTypes = {
     handleDeleteReply: PropTypes.func.isRequired,
     handleEditComment: PropTypes.func.isRequired,
     handleDeleteComment: PropTypes.func.isRequired,
+    isAscendingSorted: PropTypes.bool.isRequired,
 }
 
 export default CommentList

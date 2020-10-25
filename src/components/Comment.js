@@ -19,6 +19,7 @@ function Comment({
     handleDeleteReply,
     handleEditComment,
     handleDeleteComment,
+    isAscendingSorted,
 }) {
     const [showReplyForm, setShowReplyForm] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
@@ -66,6 +67,10 @@ function Comment({
     function toggleReply() {
         setShowReplyForm(!showReplyForm)
     }
+
+    const repliesToShow = isAscendingSorted
+        ? replies
+        : replies.slice().reverse()
 
     return (
         <li>
@@ -122,7 +127,7 @@ function Comment({
 
             {replies.length !== 0 && (
                 <ul>
-                    {replies.map(function mapReply(reply) {
+                    {repliesToShow.map(function mapReply(reply) {
                         return (
                             <Reply
                                 key={reply.id}

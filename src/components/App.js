@@ -7,6 +7,7 @@ import TextArea from './TextArea'
 import Button from './Button'
 import Legend from './Legend'
 import useComponentDidUpdate from 'hooks/useComponentUpdate'
+import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import {
     getCommentsFromLocalStorage,
     saveCommentsToLocalStorage,
@@ -21,10 +22,15 @@ function App() {
 
     const [comments, setComments] = useState(getCommentsFromLocalStorage())
 
+    const [isAscendingSorted, setIsAscendingSorted] = useState(true)
+
     useComponentDidUpdate(() => {
         saveCommentsToLocalStorage(comments)
-        console.log('Effect ran!!!')
     }, [comments])
+
+    function handleToggleSorting() {
+        setIsAscendingSorted(!isAscendingSorted)
+    }
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -151,6 +157,10 @@ function App() {
         )
     }
 
+    const commentsToShow = isAscendingSorted
+        ? comments
+        : comments.slice().reverse()
+
     return (
         <>
             <GlobalStyle />
@@ -174,15 +184,23 @@ function App() {
                 </Button>
             </StyledForm>
 
-            <p>Sort By: Date and Time</p>
+            <p>
+                <span>Sort By: Date and Time</span>
+                {isAscendingSorted ? (
+                    <BsArrowDown onClick={handleToggleSorting} />
+                ) : (
+                    <BsArrowUp onClick={handleToggleSorting} />
+                )}
+            </p>
 
             <CommentList
-                comments={comments}
+                comments={commentsToShow}
                 handleAddReply={handleAddReply}
                 handleEditReply={handleEditReply}
                 handleDeleteReply={handleDeleteReply}
                 handleEditComment={handleEditComment}
                 handleDeleteComment={handleDeleteComment}
+                isAscendingSorted={isAscendingSorted}
             />
         </>
     )

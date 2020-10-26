@@ -26,6 +26,9 @@ function App() {
 
     const [comments, setComments] = useState(getCommentsFromLocalStorage())
 
+    // for any edit form, id is entity id, i.e. commentId or replyId
+    // for add reply form, id is 0
+    const [openFormId, setOpenFormId] = useState(-1)
     const [isAscendingSorted, setIsAscendingSorted] = useState(true)
 
     // persisting comments to localstorage when comments[] updates
@@ -213,6 +216,8 @@ function App() {
                 handleEditComment={handleEditComment}
                 handleDeleteComment={handleDeleteComment}
                 isAscendingSorted={isAscendingSorted}
+                openFormId={openFormId}
+                setOpenFormId={setOpenFormId}
             />
         </>
     )

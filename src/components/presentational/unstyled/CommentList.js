@@ -10,6 +10,8 @@ const CommentList = memo(function CommentList({
     handleEditComment,
     handleDeleteComment,
     isAscendingSorted,
+    openFormId,
+    setOpenFormId,
 }) {
     return (
         comments.length !== 0 && (
@@ -25,6 +27,8 @@ const CommentList = memo(function CommentList({
                             handleEditComment={handleEditComment}
                             handleDeleteComment={handleDeleteComment}
                             isAscendingSorted={isAscendingSorted}
+                            openFormId={openFormId}
+                            setOpenFormId={setOpenFormId}
                         />
                     )
                 })}
@@ -41,6 +45,8 @@ CommentList.propTypes = {
     handleEditComment: PropTypes.func.isRequired,
     handleDeleteComment: PropTypes.func.isRequired,
     isAscendingSorted: PropTypes.bool.isRequired,
+    openFormId: PropTypes.number.isRequired,
+    setOpenFormId: PropTypes.func.isRequired,
 }
 
 export { CommentList }

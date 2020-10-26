@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Form, Legend, Input, TextArea, Button, StyledInfo } from 'components'
 
 function Reply({
+    id,
     commentId,
     replyId,
     name,
@@ -10,6 +11,8 @@ function Reply({
     date,
     handleDeleteReply,
     handleEditReply,
+    openFormId,
+    setOpenFormId,
 }) {
     const [newReply, setNewReply] = useState(text)
     const [showEditForm, setShowEditForm] = useState(false)
@@ -21,7 +24,7 @@ function Reply({
         setShowEditForm(false)
     }
 
-    return showEditForm ? (
+    return showEditForm && id === openFormId ? (
         //"EDIT REPLY" form
         <Form onSubmit={handleEdit}>
             <Legend>Edit Reply</Legend>
@@ -50,18 +53,24 @@ function Reply({
             text={text}
             date={date}
             handleDelete={handleDeleteReply}
-            handleEdit={() => setShowEditForm(true)}
+            handleEdit={() => {
+                setShowEditForm(true)
+                setOpenFormId(id)
+            }}
         />
     )
 }
 
 Reply.proTypes = {
+    id: PropTypes.number.isRequired,
     commentId: PropTypes.number.isRequired,
     replyId: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     date: PropTypes.number.isRequired,
     handleDeleteReply: PropTypes.func.isRequired,
+    openFormId: PropTypes.number.isRequired,
+    setOpenFormId: PropTypes.func.isRequired,
 }
 
 export { Reply }

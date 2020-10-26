@@ -23,6 +23,8 @@ function Comment({
     handleEditComment,
     handleDeleteComment,
     isAscendingSorted,
+    openFormId,
+    setOpenFormId,
 }) {
     const [showReplyForm, setShowReplyForm] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
@@ -71,9 +73,14 @@ function Comment({
     }
 
     function toggleReply() {
+        // "ADD REPLY" form will be visible now
+        if (!showReplyForm) {
+            setOpenFormId(0)
+        }
         setShowReplyForm(!showReplyForm)
     }
 
+    // getting the replies to show based on sorting order
     const repliesToShow = isAscendingSorted
         ? replies
         : replies.slice().reverse()
@@ -81,7 +88,7 @@ function Comment({
     return (
         <li>
             {/* rendering comment card / edit comment form */}
-            {showEditForm ? (
+            {showEditForm && id === openFormId ? (
                 // edit comment form
                 <Form onSubmit={handleEditCommentSubmit}>
                     <Legend>Edit Comment</Legend>
@@ -110,13 +117,16 @@ function Comment({
                     date={date}
                     showReplyButton={true}
                     toggleReply={toggleReply}
-                    handleEdit={() => setShowEditForm(true)}
+                    handleEdit={() => {
+                        setOpenFormId(id)
+                        setShowEditForm(true)
+                    }}
                     handleDelete={handleDeleteComment}
                 />
             )}
 
             {/* showing "ADD REPLY" form when user clicks on reply */}
-            {showReplyForm && (
+            {showReplyForm && openFormId === 0 && (
                 <Form onSubmit={handleAddReplySubmit} indented={true}>
                     <Legend>Add Reply</Legend>
                     <Input
@@ -148,6 +158,8 @@ function Comment({
                                 {...reply}
                                 handleDeleteReply={handleDeleteReply}
                                 handleEditReply={handleEditReply}
+                                openFormId={openFormId}
+                                setOpenFormId={setOpenFormId}
                             />
                         )
                     })}
@@ -168,6 +180,8 @@ Comment.propTypes = {
     handleDeleteReply: PropTypes.func.isRequired,
     handleEditComment: PropTypes.func.isRequired,
     handleDeleteComment: PropTypes.func.isRequired,
+    openFormId: PropTypes.number.isRequired,
+    setOpenFormId: PropTypes.func.isRequired,
 }
 
 export { Comment }

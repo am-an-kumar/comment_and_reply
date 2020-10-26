@@ -178,7 +178,7 @@ function App() {
 
             {/* "ADD COMMENT" form */}
             <Form onSubmit={handleSubmit}>
-                <Legend>Comment</Legend>
+                <Legend>Add Comment</Legend>
                 <Input
                     name="name"
                     placeholder="Name"

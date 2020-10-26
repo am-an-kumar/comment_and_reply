@@ -24,7 +24,7 @@ function Reply({
     return showEditForm ? (
         //"EDIT REPLY" form
         <Form onSubmit={handleEdit}>
-            <Legend>Reply</Legend>
+            <Legend>Edit Reply</Legend>
             <Input
                 name="name"
                 placeholder="Name"

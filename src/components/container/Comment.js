@@ -84,7 +84,7 @@ function Comment({
             {showEditForm ? (
                 // edit comment form
                 <Form onSubmit={handleEditCommentSubmit}>
-                    <Legend>Comment</Legend>
+                    <Legend>Edit Comment</Legend>
                     <Input
                         name="name"
                         placeholder="Name"
@@ -115,10 +115,10 @@ function Comment({
                 />
             )}
 
-            {/* showing " " form when user clicks on reply */}
+            {/* showing "ADD REPLY" form when user clicks on reply */}
             {showReplyForm && (
                 <Form onSubmit={handleAddReplySubmit} indented={true}>
-                    <Legend>Reply</Legend>
+                    <Legend>Add Reply</Legend>
                     <Input
                         name="name"
                         placeholder="Name"

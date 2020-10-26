@@ -1,5 +1,22 @@
 const localStorageKey = 'comments'
 
+const dummyData = [
+    {
+        date: 1603693344107,
+        id: 1603693344107,
+        name: 'First dummy user',
+        text: 'Dummy comment',
+        replies: [
+            {
+                date: 1603693363681,
+                id: 1603693363681,
+                name: 'Second dummy user',
+                text: 'Dummy reply',
+            },
+        ],
+    },
+]
+
 function getCommentsFromLocalStorage() {
     const commentsJSON = localStorage.getItem(localStorageKey)
 
@@ -7,7 +24,7 @@ function getCommentsFromLocalStorage() {
         const comments = JSON.parse(commentsJSON)
         return comments
     } else {
-        return []
+        return dummyData
     }
 }
 

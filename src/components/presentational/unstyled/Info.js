@@ -44,11 +44,13 @@ function Info({
                 </Button>
             </div>
             <Button
+                className="delete-btn"
                 data-commentid={commentId}
                 data-replyid={replyId}
-                onClick={handleDelete}
-                className="delete-btn"
-            ></Button>
+                onClickCapture={handleDelete}
+            >
+                <MdDelete />
+            </Button>
         </div>
     )
 }

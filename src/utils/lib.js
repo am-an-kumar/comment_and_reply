@@ -74,8 +74,21 @@ function getFormattedDate(dateMs) {
     return `${day} ${getMonthName(monthIndex)} ${year}`
 }
 
+function getParentButton(event) {
+    switch (event.target.tagName.toUpperCase()) {
+        case 'PATH':
+            return event.target.parentElement.parentElement
+        case 'SVG':
+            return event.target.parentElement
+        case 'BUTTON':
+        default:
+            return event.target
+    }
+}
+
 export {
     getCommentsFromLocalStorage,
     saveCommentsToLocalStorage,
     getFormattedDate,
+    getParentButton,
 }

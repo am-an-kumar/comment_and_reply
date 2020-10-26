@@ -32,15 +32,17 @@ const StyledInfo = styled((props) => <Info {...props} />)`
     }
 
     .delete-btn {
+        margin: 0;
+        padding: 0;
         position: absolute;
         top: 50%;
         right: 0;
+        transform: translate(50%, -50%);
         width: 24px;
         height: 24px;
         border-radius: 50%;
         background-color: #333;
         color: 'white';
-        transform: translate(50%, -50%);
     }
 `
 

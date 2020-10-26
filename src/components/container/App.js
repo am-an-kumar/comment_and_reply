@@ -14,6 +14,7 @@ import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import {
     getCommentsFromLocalStorage,
     saveCommentsToLocalStorage,
+    getParentButton,
 } from 'utils/lib'
 
 function App() {
@@ -86,8 +87,10 @@ function App() {
     }
 
     function handleDeleteComment(event) {
+        let target = getParentButton(event)
+
         // DOM attributes are strings
-        const commentId = Number(event.target.dataset['commentid'])
+        const commentId = Number(target.dataset['commentid'])
 
         setComments(
             comments.filter(function filterComment(comment) {
@@ -140,7 +143,9 @@ function App() {
     }
 
     function handleDeleteReply(event) {
-        const dataset = event.target.dataset
+        let target = getParentButton(event)
+
+        const dataset = target.dataset
         const commentId = Number(dataset['commentid'])
         const replyId = Number(dataset['replyid'])
 

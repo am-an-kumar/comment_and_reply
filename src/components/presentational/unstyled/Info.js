@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { MdDelete } from 'react-icons/md'
 import { Button } from 'components/presentational/styled'
 import { getFormattedDate } from 'utils/lib'
 
 // comments will just have the commentId while replies will have both commentId and replyId
-function Info({
+const Info = memo(function Info({
     showReplyButton,
     toggleReply,
     handleDelete,
@@ -25,6 +25,8 @@ function Info({
                 {}
             </div>
             <p className="text">{text}</p>
+
+            {/* buttons container */}
             <div className="buttons">
                 {showReplyButton && (
                     <Button
@@ -43,6 +45,8 @@ function Info({
                     Edit
                 </Button>
             </div>
+
+            {/* trash icon */}
             <Button
                 className="delete-btn"
                 data-commentid={commentId}
@@ -53,7 +57,7 @@ function Info({
             </Button>
         </div>
     )
-}
+})
 
 Info.defaultProps = {
     commentId: -1,

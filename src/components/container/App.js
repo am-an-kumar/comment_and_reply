@@ -28,6 +28,7 @@ function App() {
 
     const [isAscendingSorted, setIsAscendingSorted] = useState(true)
 
+    // persisting comments to localstorage when comments[] updates
     useComponentDidUpdate(() => {
         saveCommentsToLocalStorage(comments)
     }, [comments])
@@ -36,6 +37,7 @@ function App() {
         setIsAscendingSorted(!isAscendingSorted)
     }
 
+    // handler for adding comment
     function handleSubmit(event) {
         event.preventDefault()
 
@@ -165,6 +167,7 @@ function App() {
         )
     }
 
+    // settings commentsToShow based on "sort" order selected
     const commentsToShow = isAscendingSorted
         ? comments
         : comments.slice().reverse()
@@ -173,6 +176,7 @@ function App() {
         <>
             <GlobalStyle />
 
+            {/* "ADD COMMENT" form */}
             <Form onSubmit={handleSubmit}>
                 <Legend>Comment</Legend>
                 <Input

@@ -1,5 +1,6 @@
 const localStorageKey = 'comments'
 
+// dummy data to show when a user is using the app for the first time
 const dummyData = [
     {
         date: 1603693344107,
@@ -19,7 +20,6 @@ const dummyData = [
 
 function getCommentsFromLocalStorage() {
     const commentsJSON = localStorage.getItem(localStorageKey)
-
     if (commentsJSON) {
         const comments = JSON.parse(commentsJSON)
         return comments
@@ -64,6 +64,8 @@ function getMonthName(monthIndex) {
     }
 }
 
+// dateMs - number of milliseconds passed since EPOCH's time
+// formats dateMs and returns a custom Date String of the form `DD Mon YYYY`
 function getFormattedDate(dateMs) {
     const date = new Date(dateMs)
 

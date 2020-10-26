@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Comment, List } from 'components'
 
-function CommentList({
+const CommentList = memo(function CommentList({
     comments,
     handleAddReply,
     handleEditReply,
@@ -31,7 +31,7 @@ function CommentList({
             </List>
         )
     )
-}
+})
 
 CommentList.propTypes = {
     comments: PropTypes.array.isRequired,

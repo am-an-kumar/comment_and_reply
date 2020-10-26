@@ -14,14 +14,16 @@ function Reply({
     const [newReply, setNewReply] = useState(text)
     const [showEditForm, setShowEditForm] = useState(false)
 
-    function handleSubmit(event) {
+    // edit reply handler
+    function handleEdit(event) {
         event.preventDefault()
         handleEditReply(commentId, replyId, newReply)
         setShowEditForm(false)
     }
 
     return showEditForm ? (
-        <Form onSubmit={handleSubmit}>
+        //"EDIT REPLY" form
+        <Form onSubmit={handleEdit}>
             <Legend>Reply</Legend>
             <Input
                 name="name"
@@ -40,6 +42,7 @@ function Reply({
             </Button>
         </Form>
     ) : (
+        // "REPLY" card
         <StyledInfo
             commentId={commentId}
             replyId={replyId}

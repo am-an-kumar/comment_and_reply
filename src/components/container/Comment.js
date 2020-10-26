@@ -28,6 +28,7 @@ function Comment({
     const [showEditForm, setShowEditForm] = useState(false)
     const [newComment, setNewComment] = useState(text)
 
+    // state for "ADD REPLY" form
     const [formData, setFormData] = useState({
         name: '',
         reply: '',
@@ -47,12 +48,13 @@ function Comment({
         setShowReplyForm(false)
     }
 
-    function handleEditFormSubmit(event) {
+    function handleEditCommentSubmit(event) {
         event.preventDefault()
         handleEditComment(id, newComment)
         setShowEditForm(false)
     }
 
+    // change handler for "ADD REPLY" form
     function handleChange(event) {
         let { name, value } = event.target
         value = value.trimStart()
@@ -78,8 +80,10 @@ function Comment({
 
     return (
         <li>
+            {/* rendering comment card / edit comment form */}
             {showEditForm ? (
-                <Form onSubmit={handleEditFormSubmit}>
+                // edit comment form
+                <Form onSubmit={handleEditCommentSubmit}>
                     <Legend>Comment</Legend>
                     <Input
                         name="name"
@@ -98,6 +102,7 @@ function Comment({
                     </Button>
                 </Form>
             ) : (
+                // comment card
                 <StyledInfo
                     name={name}
                     text={text}
@@ -110,6 +115,7 @@ function Comment({
                 />
             )}
 
+            {/* showing " " form when user clicks on reply */}
             {showReplyForm && (
                 <Form onSubmit={handleAddReplySubmit} indented={true}>
                     <Legend>Reply</Legend>

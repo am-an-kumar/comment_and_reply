@@ -11,18 +11,6 @@ const Form = styled.form`
     background-color: #dedede;
     border-radius: 5px;
 
-    & p {
-        margin: 0 0 1rem 0;
-    }
-
-    & input {
-        margin-bottom: 1rem;
-    }
-
-    & textarea {
-        margin-bottom: 1rem;
-    }
-
     & button {
         align-self: flex-end;
     }

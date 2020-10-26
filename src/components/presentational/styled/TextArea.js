@@ -5,6 +5,7 @@ const TextArea = styled.textarea`
     border-radius: 2px;
     border: none;
     outline: none;
+    resize: vertical;
 `
 
 export { TextArea }

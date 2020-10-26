@@ -30,6 +30,14 @@ const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
     }
 
+    @keyframes expand {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 `
 
 export { GlobalStyle }

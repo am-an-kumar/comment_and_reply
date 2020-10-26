@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-    StyledForm,
-    Legend,
-    Input,
-    TextArea,
-    Button,
-    StyledInfo,
-} from 'components'
+import { Form, Legend, Input, TextArea, Button, StyledInfo } from 'components'
 
 function Reply({
     commentId,
@@ -28,7 +21,7 @@ function Reply({
     }
 
     return showEditForm ? (
-        <StyledForm onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
             <Legend>Reply</Legend>
             <Input
                 name="name"
@@ -42,8 +35,10 @@ function Reply({
                 value={newReply}
                 onChange={(event) => setNewReply(event.target.value)}
             />
-            <Button type="submit">Post</Button>
-        </StyledForm>
+            <Button type="submit" disabled={!newReply}>
+                Post
+            </Button>
+        </Form>
     ) : (
         <StyledInfo
             commentId={commentId}

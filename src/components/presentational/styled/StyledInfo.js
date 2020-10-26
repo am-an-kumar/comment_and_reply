@@ -6,6 +6,8 @@ const StyledInfo = styled((props) => <Info {...props} />)`
     padding: 1rem;
     background-color: #dedede;
     border-radius: 5px;
+    position: relative;
+    animation: expand 0.5s ease-in-out;
 
     & > .meta {
         display: flex;
@@ -27,6 +29,18 @@ const StyledInfo = styled((props) => <Info {...props} />)`
             padding: 0;
             margin-right: 1rem;
         }
+    }
+
+    .delete-btn {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #333;
+        color: 'white';
+        transform: translate(50%, -50%);
     }
 `
 

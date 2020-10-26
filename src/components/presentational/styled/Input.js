@@ -5,6 +5,10 @@ const Input = styled.input`
     border-radius: 2px;
     border: none;
     outline: none;
+
+    &:read-only {
+        background-color: #dedede;
+    }
 `
 
 export { Input }

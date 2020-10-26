@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-    StyledForm,
+    Form,
     Input,
     TextArea,
     Button,
@@ -79,7 +79,7 @@ function Comment({
     return (
         <li>
             {showEditForm ? (
-                <StyledForm onSubmit={handleEditFormSubmit}>
+                <Form onSubmit={handleEditFormSubmit}>
                     <Legend>Comment</Legend>
                     <Input
                         name="name"
@@ -93,8 +93,10 @@ function Comment({
                         value={newComment}
                         onChange={(event) => setNewComment(event.target.value)}
                     />
-                    <Button type="submit">Post</Button>
-                </StyledForm>
+                    <Button type="submit" disabled={!newComment}>
+                        Post
+                    </Button>
+                </Form>
             ) : (
                 <StyledInfo
                     name={name}
@@ -109,7 +111,7 @@ function Comment({
             )}
 
             {showReplyForm && (
-                <StyledForm onSubmit={handleAddReplySubmit}>
+                <Form onSubmit={handleAddReplySubmit} indented={true}>
                     <Legend>Reply</Legend>
                     <Input
                         name="name"
@@ -126,7 +128,7 @@ function Comment({
                     <Button type="submit" disabled={formData.disabled}>
                         Post
                     </Button>
-                </StyledForm>
+                </Form>
             )}
 
             {replies.length !== 0 && (

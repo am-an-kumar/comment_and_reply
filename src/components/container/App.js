@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import {
     GlobalStyle,
-    StyledForm,
+    Form,
     Input,
     TextArea,
     Button,
     Legend,
+    Banner,
     CommentList,
 } from 'components'
 import useComponentDidUpdate from 'hooks/useComponentUpdate'
@@ -167,7 +168,7 @@ function App() {
         <>
             <GlobalStyle />
 
-            <StyledForm onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <Legend>Comment</Legend>
                 <Input
                     name="name"
@@ -184,16 +185,16 @@ function App() {
                 <Button type="submit" disabled={formData.disabled}>
                     Post
                 </Button>
-            </StyledForm>
+            </Form>
 
-            <p>
+            <Banner>
                 <span>Sort By: Date and Time</span>
                 {isAscendingSorted ? (
                     <BsArrowDown onClick={handleToggleSorting} />
                 ) : (
                     <BsArrowUp onClick={handleToggleSorting} />
                 )}
-            </p>
+            </Banner>
 
             <CommentList
                 comments={commentsToShow}

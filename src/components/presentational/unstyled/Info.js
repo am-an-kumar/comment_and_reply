@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { MdDelete } from 'react-icons/md'
 import { Button } from 'components/presentational/styled'
 import { getFormattedDate } from 'utils/lib'
 
@@ -41,14 +42,13 @@ function Info({
                 >
                     Edit
                 </Button>
-                <Button
-                    data-commentid={commentId}
-                    data-replyid={replyId}
-                    onClick={handleDelete}
-                >
-                    Delete
-                </Button>
             </div>
+            <Button
+                data-commentid={commentId}
+                data-replyid={replyId}
+                onClick={handleDelete}
+                className="delete-btn"
+            ></Button>
         </div>
     )
 }
